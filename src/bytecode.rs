@@ -5,14 +5,13 @@ use std::fmt::Formatter;
 #[derive(Copy, Clone, Debug)]
 pub enum OpCode {
     RETURN,
-    LOAD_CONST { constant: i8 },
-}
 
-impl fmt::Display for OpCode {
-    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        match *self {
-            OpCode::RETURN => write!(f, "RETURN"),
-            OpCode::LOAD_CONST { constant } => write!(f, "LOAD_CONST {}", constant),
-        }
-    }
+    LOAD_CONST { constant_index: i8 },
+    LOAD_CONST_LARGE { constant_index: i32 },
+
+    NEGATE,
+    ADD,
+    SUBTRACT,
+    MULTIPLY,
+    DIVIDE,
 }
